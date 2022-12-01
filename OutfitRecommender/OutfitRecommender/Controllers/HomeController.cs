@@ -15,6 +15,9 @@ namespace OutfitRecommender.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("userName") == null)
+                return RedirectToAction(nameof(Index), "Login");
+
             return View();
         }
 
